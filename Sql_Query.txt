@@ -1,0 +1,161 @@
+ //  Query to CREATE DATABASES
+
+mysql> create database adv;
+
+//  Query to SHOW DATABASES
+
+mysql> show databases;
+
+// Query to USE DATABASE
+
+mysql> use adv;
+
+ //Query to SHOW TABLES
+
+mysql> show tables;
+
+//Query to CREATE TABLE
+mysql> create table emp(id int, name varchar(50));
+
+//Query to INSERT DATA
+
+mysql> insert into emp values(1, "swati");
+
+       //Query to DISPLAY DATA
+
+mysql> select * from emp;
+ 
+// ALTER
+
+mysql> alter table emp add salary int;
+     
+
+mysql> select * from emp;
+    
+//  //Query to UPDATE DATA
+mysql> update emp set salary = 50000;
+
+mysql> select * from emp;
+
+mysql> update emp set salary = 60000 where id = 1;
+
+ //Query to DELETE 
+
+mysql> alter table emp drop salary;
+
+mysql> delete from emp where id = 1;
+
+//Query to DELETE  TABLE
+
+
+mysql> drop table emp;
+
+//Query to DELETE DATABASE
+
+
+mysql> drop database adv;
+
+//Query to show data ORDER FORM 
+
+mysql> select * from emp order by salary;
+
+mysql> select * from emp order by salary limit 0, 1;
+
+mysql> select * from emp order by salary limit 1, 1;
+
+//Query to show LARGEST (MAX/MIN)
+
+
+
+
+mysql> select max(id) from emp;
+
+mysql> select max(salary) from emp;
+
+
+mysql> select min(salary) from emp;
+
+mysql> select * from emp;
+
+//Query to show  2ND LARGEST (MAX/MIN)
+
+
+mysql> select max(salary) from emp where salary < (select max(salary) from emp);
+
+mysql> select * from emp where salary = (select max(salary) from emp where salary < (select max(salary) from emp));
+
+mysql> select min(salary) from emp;
+
+//Query to COUNT
+
+
+mysql> select count(id) from emp;
+
+//Query to SUM
+
+mysql> select sum(salary) from emp;
+
+//Query to COUNT GROUP
+
+
+mysql> select name, count(name)from emp group by name;
+
+//Query to In
+
+
+mysql> select * from emp where name in('a','b');
+ 
+//Query TO TOTAL(P+C+M)
+
+
+mysql> select * ,(physics + chemistry + maths) as total from markseet;
+
+// Query to percentage
+
+mysql> select * ,(physics + chemistry + maths) as total,((physics + chemistry + maths)/3) as percentage from markseet;
+
+//Query to condition
+
+
+mysql> select * ,(physics + chemistry + maths) as total,((physics + chemistry + maths)/3) as percentage from markseet where physics>33 and chemistry>33 and maths>33;
+
+//Query to 2 TABLE INNER JION
+
+
+mysql> select * from emp inner join dept on emp.dept_id= dept.id;
+
+//Query to 2 TABLE LEFT JION
+
+mysql>select * from emp left join dept on emp.dept_id= dept.id;
+
+//Query to 2 table RIGHT JION
+
+mysql> select * from emp right join dept on emp.dept_id= dept.id;
+
+//Query to 2 table LOUTER JION
+
+mysql>select * from emp left join dept on emp.dept_id= dept.id union select * from emp right join dept on emp.dept_id= dept.id;
+
+
+//Query to 2 table FULLOUTER JION
+
+
+mysql> select * from emp left join dept on emp.dept_id= dept.id where dept_id is null union  select * from emp right join dept on emp.dept_id= dept.id where emp.id is null ;
+
+//Query to 3 TABLE INNER JION
+
+
+mysql> select * from emp inner join dept inner join city on emp.dept_id= dept.id and emp.id= city.id;
+
+//Query to 3 TABLE LEFT JION
+
+
+
+mysql> select * from emp left join dept  on emp.id=dept.id left join city on emp.id=city.id;
+
+//Query to 3 TABLE RIGHT JION
+
+
+mysql> select * from emp right join dept  on emp.id=dept.id right join city on emp.id=city.id;
+
+// 
